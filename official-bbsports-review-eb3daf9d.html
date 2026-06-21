@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bb体育 · 知识入口指引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fff2e0 0%, #ffe4c4 45%, #fdd9b5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem 1.2rem;
+            line-height: 1.6;
+            color: #2e241e;
+        }
+
+        .page-wrap {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 主卡片 */
+        .main-card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 30, 0.25), 0 8px 16px -6px rgba(0,0,0,0.05);
+            padding: 2.8rem 2.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 640px) {
+            .main-card {
+                padding: 2rem 1.2rem;
+                border-radius: 28px;
+            }
+        }
+
+        /* 头部区域 */
+        .hero-area {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #eddccc;
+            padding-bottom: 1.2rem;
+        }
+
+        .hero-area h1 {
+            font-size: 2rem;
+            font-weight: 540;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #8b5a2b, #b47b4c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-area .badge {
+            background: #efdccc;
+            padding: 0.3rem 1rem;
+            border-radius: 80px;
+            font-size: 0.8rem;
+            color: #4f3a2b;
+            font-weight: 450;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        /* 说明区 — 目录风格网格 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.8rem 1.5rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .guide-item {
+            background: #fcf6ef;
+            padding: 1.2rem 1rem 1rem 1.2rem;
+            border-radius: 24px;
+            border-left: 5px solid #dbb594;
+            transition: background 0.15s;
+        }
+
+        .guide-item:hover {
+            background: #f7ede1;
+        }
+
+        .guide-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9a7c64;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .guide-item .title {
+            font-weight: 540;
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+            color: #3b2c21;
+        }
+
+        .guide-item p {
+            font-size: 0.9rem;
+            color: #5a4739;
+        }
+
+        /* 信息卡片式说明区 */
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            background: #fefaf5;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #eedbcb;
+            box-shadow: 0 2px 6px rgba(190, 140, 90, 0.08);
+        }
+
+        .info-card h3 {
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #6d4f34;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card h3::before {
+            content: "📌";
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: #3f3227;
+        }
+
+        .info-card ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.4rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #b48255;
+            font-weight: bold;
+        }
+
+        /* 提示区 — 背景更柔和 */
+        .tip-box {
+            background: #f1e4d6;
+            border-radius: 60px 20px 60px 20px;
+            padding: 1.8rem 2.2rem;
+            margin: 2.2rem 0 2rem;
+            color: #36281d;
+            font-size: 0.95rem;
+            border: 1px solid #e7cfbb;
+            box-shadow: inset 0 1px 4px rgba(255,245,235,0.6);
+        }
+
+        .tip-box strong {
+            color: #6b4d33;
+            font-weight: 550;
+        }
+
+        .tip-box a {
+            color: #7b5637;
+            text-decoration: none;
+            font-weight: 530;
+            border-bottom: 1px dashed #b28b6b;
+            transition: border 0.15s;
+        }
+
+        .tip-box a:hover {
+            border-bottom: 1px solid #7b5637;
+        }
+
+        /* 相关信息区 — FAQ摘要风格 */
+        .related-wrap {
+            margin: 2.5rem 0 1.8rem;
+        }
+
+        .related-wrap h2 {
+            font-size: 1.3rem;
+            font-weight: 520;
+            color: #5f4430;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-item {
+            background: #f9f1e9;
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #e7d5c2;
+            transition: background 0.1s;
+        }
+
+        .faq-item:hover {
+            background: #f4e5d6;
+        }
+
+        .faq-item .q {
+            font-weight: 510;
+            display: block;
+            color: #4a3627;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item .a {
+            color: #4d3c2e;
+            font-size: 0.92rem;
+        }
+
+        /* 圆角按钮感链接 (语句中的链接以按钮风格呈现) */
+        .btn-like-link {
+            display: inline-block;
+            background: #dfc8b2;
+            color: #2b1f17;
+            padding: 0.1rem 1rem;
+            border-radius: 60px;
+            font-weight: 520;
+            text-decoration: none;
+            transition: all 0.15s;
+            border: 1px solid #d2b495;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .btn-like-link:hover {
+            background: #d4b89b;
+            border-color: #b58f6e;
+            box-shadow: 0 2px 8px rgba(130, 80, 40, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .inline-link {
+            color: #7b563b;
+            text-decoration: none;
+            font-weight: 510;
+            border-bottom: 1px solid #dcc2ab;
+            transition: border 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 1px solid #7b563b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 580px) {
+            .guide-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .info-card {
+                padding: 1.2rem 1.2rem;
+            }
+            .tip-box {
+                padding: 1.4rem 1.2rem;
+                border-radius: 30px 10px 30px 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #7d6856;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="main-card">
+        <!-- hero / 标题区 -->
+        <div class="hero-area">
+            <h1>bb体育 · 知识库指引</h1>
+            <span class="badge">快速识别 · 信息目录</span>
+        </div>
+
+        <!-- 描述：网站用途速览 -->
+        <p style="font-size: 1.08rem; margin-bottom: 0.8rem; color: #3c2d22;">
+            这里是一处围绕 <strong>bb体育</strong> 整理的内容索引，目的是帮你在进入页面之前，先了解这个站点主要提供什么、适合怎样使用。结构上采用目录式板块，你可以根据需求快速定位。
+        </p>
+
+        <!-- 目录感布局：四个卡片 -->
+        <div class="guide-grid">
+            <div class="guide-item">
+                <span class="label">类别 · 1</span>
+                <div class="title">平台概览</div>
+                <p>bb体育 所涵盖的运动项目、赛事类型与基本服务模式。</p>
+            </div>
+            <div class="guide-item">
+                <span class="label">类别 · 2</span>
+                <div class="title">信息查询</div>
+                <p>赛事日程、数据统计、相关公告的查阅方式与更新规律。</p>
+            </div>
+            <div class="guide-item">
+                <span class="label">类别 · 3</span>
+                <div class="title">使用指引</div>
+                <p>账号相关、界面导航、常见操作流程的简要说明。</p>
+            </div>
+            <div class="guide-item">
+                <span class="label">类别 · 4</span>
+                <div class="title">内容来源</div>
+                <p>数据引用、第三方接口及内容审核的基本原则。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：两个信息卡片 -->
+        <div class="info-block">
+            <div class="info-card">
+                <h3>bb体育 适合哪些场景</h3>
+                <p>无论你是想快速查看比赛结果、对比不同联赛的数据，还是想了解平台的功能分区，这里都提供了一条清晰的路径。内容组织偏向实用，减少多余装饰。</p>
+                <ul>
+                    <li>日常浏览赛事信息与积分榜</li>
+                    <li>了解体育项目的基础规则与术语</li>
+                    <li>获取平台内各模块的入口位置</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>站点结构简记</h3>
+                <p>首页以导航与摘要为主，各频道按运动种类或赛事地区划分。如果你习惯先看目录再深入，这种布局应该比较顺手。建议花一分钟扫一眼主要标签，后续查找更快。</p>
+            </div>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="tip-box">
+            <strong>提示</strong> 本页为介绍性索引，并非功能页面。若想直接使用服务，可前往
+            <a href="https://official-bbsports.com" class="btn-like-link">bb体育</a>
+            ，那里有完整的交互界面与最新内容。信息请以站内实时展示为准。
+        </div>
+
+        <!-- 相关信息区：FAQ摘要风格 -->
+        <div class="related-wrap">
+            <h2>📋 相关信息 · 简答</h2>
+            <div class="faq-item">
+                <span class="q">▸ 这个网站主要是做什么的？</span>
+                <span class="a">bb体育 是一个综合体育信息与赛事动态平台，提供多种运动的数据查阅和浏览服务。</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">▸ 需要注册才能浏览吗？</span>
+                <span class="a">大部分内容对访客开放，部分个性化功能可能需要账号。具体以站内提示为准。</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">▸ 信息更新频率如何？</span>
+                <span class="a">热门赛事通常实时或近实时更新，联赛数据每日同步。你可以参考页面上的时间戳。</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">▸ 如何快速定位到某项运动？</span>
+                <span class="a">首页设有分类导航，或使用搜索功能。另外，在 <a href="https://official-bbsports.com" class="inline-link">bb体育</a> 主站内也有筛选器。</span>
+            </div>
+        </div>
+
+        <!-- 一个自然的句子嵌入链接（包含在段落中） -->
+        <p style="margin-top: 1.2rem; border-top: 1px solid #eddccc; padding-top: 1.2rem; color: #3c2c1f;">
+            如果你已经对平台有一定了解，可以直接通过 <a href="https://official-bbsports.com" class="btn-like-link">bb体育</a> 进入主站。本索引页面仅作为知识库入口，帮助你更高效地使用后续内容。
+        </p>
+
+        <div class="footer-note">
+            内容索引 · 保持更新
+        </div>
+    </div>
+</div>
+</body>
+</html>
